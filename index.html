@@ -1,17 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Моё мини-приложение</title>
     <meta charset="UTF-8">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТочкаСхода — Знакомства</title>
+    
+    <!-- Шрифт: Inter (современный sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Стили -->
     <style>
-        body { font-family: Arial; text-align: center; padding: 20px; }
-        button { padding: 10px 20px; background: #0088cc; color: white; border: none; border-radius: 5px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: white;
+            color: #10367D;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        h1 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin: 20px 0;
+            letter-spacing: -0.5px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #4A5568;
+            font-weight: 400;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #10367D;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 8px;
+            box-shadow: 0 4px 6px rgba(16, 54, 125, 0.1);
+        }
+        
+        .btn:hover {
+            background: #0D2B5E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(16, 54, 125, 0.15);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #10367D;
+            border: 1px solid #10367D;
+        }
+        
+        .btn-secondary:hover {
+            background: #F7FAFC;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes wave {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .logo {
+            animation: wave 2s ease-in-out infinite;
+        }
     </style>
+    
+    <!-- Telegram WebApp -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <h1>Привет, Telegram! 👋</h1>
-    <p>Это моё первое мини-приложение.</p>
-    <button onclick="alert('Кнопка работает!')">Нажми меня</button>
+    <div class="container">
+        <div class="logo">
+            <!-- Абстрактный логотип "волна" (SVG) -->
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20,50 Q35,20 50,50 T80,50" 
+                      stroke="#10367D" 
+                      stroke-width="8" 
+                      fill="none" 
+                      stroke-linecap="round"/>
+            </svg>
+        </div>
+        
+        <h1>ТочкаСхода</h1>
+        <p>Серьёзные знакомства для вдумчивых людей.</p>
+        
+        <a href="#" class="btn" id="startBtn">Начать</a>
+        <a href="#" class="btn btn-secondary">Как это работает?</a>
+    </div>
+
+    <!-- Скрипты -->
+    <script>
+        // Telegram WebApp
+        if (window.Telegram?.WebApp) {
+            const tg = window.Telegram.WebApp;
+            tg.expand();
+            
+            // Цвет фона Telegram (опционально)
+            tg.setHeaderColor('#10367D');
+            tg.setBackgroundColor('#FFFFFF');
+        }
+        
+        // Клик по кнопке
+        document.getElementById('startBtn').addEventListener('click', () => {
+            alert("Раздел в разработке. Скоро здесь будет анкета!");
+        });
+    </script>
 </body>
 </html>
